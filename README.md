@@ -42,7 +42,7 @@
 - Machine Learning
 - Plataformas: Linux, AWS, Google Cloud
 
-** ¿Que es machine learning (def: 2019)? **
+**¿Que es machine learning (def: 2019)?**
 
 El aprendizaje automatico es la ciencia y arte de programar computadoras para que aprendan a partir de datos
 
@@ -50,7 +50,7 @@ Aprendizaje Automatico:
 
 - Filtros de Spam (Enfoque Tradicional vs Enfoque ML)
 
-¿Para que se utiliza ML?
+**¿Para que se utiliza ML?**
 
 - Salud
 - Gaming
@@ -58,7 +58,7 @@ Aprendizaje Automatico:
 - Turismo
 - Seguridad
 
-** Metodologia **
+**Metodologia**
 
 - Entender el problema
 - Recolectar los datos
@@ -67,3 +67,54 @@ Aprendizaje Automatico:
 - Analizar los datos
 - Comunicar los resultados
 
+
+ ## Visualizacion de Datos
+
+**¿Por qué es necesario graficar?**
+
+- Las tecnicas de visualizacion de datos son muy importantes tanto para nuestro trabajo como para comunicarlo
+- La cantidad de tipos de graficos disponibles es enorme y es importante entenderlos y saber por qué es util cada uno
+- Entender de forma eficiente los datos
+- Comunicar de forma concisa y clara
+- Encontrar patrones/relaciones
+
+
+**Por qué es necesario graficar?**
+
+- El analisis descriptivo es uno de las partes principales de cualquier analisis relacionado con un proyecto de ciencia de datos o de una investigacion especifica
+- La agregacion de datos, el resumen, y la visualizacion son algunos de los pilares que respaldan esta area
+- La visualizacion de datos es una herramienta poderosa y ampliamente adoptada debido a su efectividad para extraer la informacion correcta, comprender e interpretar los resultados de manera clara y facil
+- Tratar con conjuntos de datos multidimensionales con mas de una variable o atributo comienza a causar problemas, ya que estamos restringidos a comunicar en dos dimensiones (a lo sumo 3)
+
+
+**Datasaurus**
+
+Todos estos graficos tienen la misma media y desvio estandar
+
+**Visualizacion para ML**
+
+- Analisis inicial de los datos
+  - Para examinar si los datos satisfacen los supuestos requeridos para el metodo
+  - Tienen complicaciones inesperadas como valores atipicos o no linealidad
+- Evaluar el ajuste del modelo
+  - Predicho vs Observado
+  - Analisis de Residuos
+
+**Plots**
+
+1. De distribucion continua
+  - Histograma
+  - Density Plot
+  - Box Plot
+3. De distribucion discreta
+  - Bar Plot
+  - Stacked Bar Plot
+  - Treemap
+4. De relacion
+  - Scatter Plot
+  - Regression Plot
+  - HeatMap
+6. Series de tiempo
+  - Lineplot
+  - Violin Plots
+8. Otros
