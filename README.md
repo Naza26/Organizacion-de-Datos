@@ -129,3 +129,9 @@ Todos estos graficos tienen la misma media y desvio estandar
 <img width="1188" alt="Screen Shot 2022-08-27 at 14 30 05" src="https://user-images.githubusercontent.com/50343570/187041428-6126bdc5-f477-49c3-839a-0bbcb8d4a218.png">
 
 
+## Tipos de Variables
+
+1. Categoricas o Cualitativas
+2. Cuasicuantitativas u Ordinales
+3. Cuantitativas Discretas
+4. Cuantitativas Continuas
