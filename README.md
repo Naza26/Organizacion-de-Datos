@@ -118,3 +118,14 @@ Todos estos graficos tienen la misma media y desvio estandar
   - Lineplot
   - Violin Plots
 8. Otros
+
+**Pandas CheatSheet**
+
+[Pandas_Cheat_Sheet.pdf](https://github.com/Naza26/Organizacion-de-Datos/files/9438408/Pandas_Cheat_Sheet.pdf)
+
+<img width="1195" alt="Screen Shot 2022-08-27 at 14 29 49" src="https://user-images.githubusercontent.com/50343570/187041421-0007a2ec-b69a-44b2-999f-5905c7586aec.png">
+
+
+<img width="1188" alt="Screen Shot 2022-08-27 at 14 30 05" src="https://user-images.githubusercontent.com/50343570/187041428-6126bdc5-f477-49c3-839a-0bbcb8d4a218.png">
+
+
