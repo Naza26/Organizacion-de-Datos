@@ -132,6 +132,17 @@ Todos estos graficos tienen la misma media y desvio estandar
 ## Tipos de Variables
 
 1. Categoricas o Cualitativas
+
+Las distintas modalidades que adoptan estas variables sólo se distinguen por ser diferentes, no se puede establecer un ordenamiento entre ellas. Son ejemplos de estas variables: color de cabello, tipo de auto, sexo.
+
 2. Cuasicuantitativas u Ordinales
+
+En estas variables, si bien se puede ordenar las modalidades que adopta, no se puede establecer una distancia entre ellas. Por ejemplo: calificación de examen (A, B, C, D y E), estadío de una enfermedad (I, II, III o IV).
+
 3. Cuantitativas Discretas
+
+Estas variables toman valores numéricos siendo que entre dos valores consecutivos de las mismas no existen valores intermedios. Pueden tomar un conjunto a lo sumo numerable de valores, vinculándose generalmente al proceso de contar. Son ejemplos de estas variables: cantidad de hijos, cantidad de materias aprobadas, dinero en una billetera.
+
 4. Cuantitativas Continuas
+
+Estas variables también toman valores numéricos, pero entre dos valores de la variable existen infinitos valores intermedios, asociándose generalmente al proceso de medir. Son ejemplos de estas variables: peso, edad, duración de un llamado
