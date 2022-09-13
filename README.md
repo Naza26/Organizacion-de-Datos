@@ -102,10 +102,27 @@ Todos estos graficos tienen la misma media y desvio estandar
 
 **Plots**
 
-1. De distribucion continua
-  - Histograma
-  - Density Plot
-  - Box Plot
+1. De distribucion continua:
+
+    Eje X = Soporte Continuo (NO discreto).
+  
+    Eje Y = Cantidad o Similar.
+  
+  - Histograma:
+  
+    Eje Y = Que empiece en cero (0)
+  
+    Numero apropiado de bins. Por ejemplo bin size = 5.0
+  
+    Limite de bins interpretables (enteros por ejemplo)
+  
+  - Density Plot:
+
+    Eje Y = Densidad (Poco interpretable, ya no sabemos las cantidades)
+  
+    Suavizar los bordes para lograr la densidad, o sabe que no tiene sentido < 0
+  
+  - Box Plot:
 3. De distribucion discreta
   - Bar Plot
   - Stacked Bar Plot
