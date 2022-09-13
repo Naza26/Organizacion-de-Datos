@@ -123,6 +123,10 @@ Todos estos graficos tienen la misma media y desvio estandar
     Suavizar los bordes para lograr la densidad, o sabe que no tiene sentido < 0
   
   - Box Plot:
+
+    Un diagrama de caja o Box plot muestra visualmente la distribución de los datos numéricos y la asimetría mediante la visualización de los cuartiles
+    (o percentiles) y los promedios de los datos.
+    
 3. De distribucion discreta
   - Bar Plot
   - Stacked Bar Plot
@@ -163,3 +167,16 @@ Estas variables toman valores numéricos siendo que entre dos valores consecutiv
 4. Cuantitativas Continuas
 
 Estas variables también toman valores numéricos, pero entre dos valores de la variable existen infinitos valores intermedios, asociándose generalmente al proceso de medir. Son ejemplos de estas variables: peso, edad, duración de un llamado
+
+
+## Correlacion de Pearson
+
+Los diagramas de dispersión son útiles para ver si dos variables están
+correlacionadas
+
+Para 2 variables podemos medir su correlación lineal con el coeficiente de correlación r (Pearson). Este coeficiente, es
+una función que mide cuán relacionada estan 2 variables de forma lineal.
+
+- Si da 0, NO existe correlacion
+- Si da 1 estan relacionadas linealmente de forma PERFECTA (todos los puntos estan en una linea)
+- Si da -1 existe una correlacion NEGATIVA perfecta
