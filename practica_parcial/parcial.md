@@ -215,4 +215,178 @@ Podemos realizar la prueba de la estadística de Hopkins de forma iterativa, uti
 <img width="734" alt="Screen Shot 2022-10-11 at 20 29 00" src="https://user-images.githubusercontent.com/50343570/195216713-966e76a0-d659-4fd4-975b-05105bb8d40b.png">
 
 
+## Ingenieria de Features
+
+**Preprocesamiento y transformacion de datos**
+
+Algunas tareas de estas etapas son:
+  - **Integración de datos**: Integración de múltiples bases de datos, archivos, etc.
+  - **Limpieza de datos**: Completar valores faltantes, eliminación de ruido, identificar o eliminar valores atípicos y corregir incoherencias
+  - **Reducción de datos**: Reducción de dimensionalidad, Reducción de Numerosidad
+  - **Transformación de datos**: Normalizaciones, generación de jerarquías conceptuales, etc. (Feature Engineering)
+
+
+Limpieza de datos
+
+- No solo NANs
+- MCAR (Missing completly at random)
+- MNAR (Missing not at random)
+- MAR (Missing at random)
+
+Tipos de datos faltantes:
+
+MCAR: 
+
+La falta de valores no tiene nada que ver con la persona o el objeto estudiado. No existen relaciones con la variable misma donde se encuentran los datos faltantes, o con las restantes variables en el dataset que expliquen porque faltan.
+Por ejemplo, una muestra de sangre puede ser dañada en un laboratorio. 
+
+MNAR:
+
+La razón por la cual faltan los datos depende precisamente de los mismos datos que hemos recolectado (está relacionado con la razón por la que falta). Por ejemplo, una persona que no atiende a un test de drogas porque la noche anterior las consumió.
+
+MAR:
+
+La causa de los datos faltantes no depende de estos mismos datos faltantes, pero puede estar relacionada con otras variables del dataset. Por ejemplo: encuestas mal diseñadas, que me pregunten si tengo hijos, que yo repsonda que no y que luego me pregunten que deportes practican mis hijos, ahi seguro lo dejo en blanco y el valor resulta faltante.
+
+Estrategias para trabajar con datos faltantes
+
+**Eliminar registros o variables**
+
+Si la eliminación de un subconjunto disminuye significativamente la utilidad de los datos, la eliminación del caso puede no ser efectiva (No se recomienda en situaciones que no sean MCAR).
+
+
+**Imputar datos**
+
+Utilizar métodos de relleno de faltantes.
+
+
+**Imputacion de Datos**
+
+**1. Sustitución de casos**
+
+Se reemplaza con valores no observados. Debería ser realizado por un experto en esos datos.
+
+**2. Sustitución por Media o Mediana**
+
+Se reemplaza utilizando la medida calculada de los valores presentes.
+
+Algunas desventajas:
+
+- La varianza estimada de la nueva variable no es válida porque está atenuada por los valores repetidos
+- Se distorsiona la distribución
+- Las correlaciones que se observen estarán deprimidas debido a la repetición de un solo valor constante
+
+**3. Imputacion Cold Deck***
+
+Selecciona valores o usa relaciones obtenidas de fuentes distintas de la base de datos actual.
+
+<img width="695" alt="Screen Shot 2022-10-22 at 14 02 43" src="https://user-images.githubusercontent.com/50343570/197353021-63f5496c-fbe0-4426-abdd-0f7977ea7439.png">
+
+**3. Imputacion Hot Deck***
+
+Se reemplazan los faltantes con valores obtenidos de registros que son los más similares. (Hay que definir que es similar, K vecinos más cercanos puede servir)
+
+<img width="694" alt="Screen Shot 2022-10-22 at 14 03 39" src="https://user-images.githubusercontent.com/50343570/197353068-3b986800-16eb-429d-96dd-86290b4ecf36.png">
+
+
+**4. Imputacion por regresion**
+
+El dato faltante es reemplazado con el valor predicho por un modelo de regresión.
+
+
+<img width="732" alt="Screen Shot 2022-10-22 at 14 04 30" src="https://user-images.githubusercontent.com/50343570/197353102-ef1ff735-a2b9-421b-83b6-739e3609d063.png">
+
+**5. MICE - Multivariate Imputation by Chained Equations** 
+
+Trabaja bajo el supuesto de que el origen de los faltantes es Missing At Random (MAR). Es un proceso de imputación de datos faltantes iterativo, en el cual, en cada iteración cada valor faltante de cada variable se predice en función de las variables restantes. Esta iteración se repite hasta que se encuentre convergencia en los valores. Por lo general 10 iteraciones es suficiente. (En cada iteración genera un dataset)
+
+**Feature Engineering**
+
+Esta etapa incluye cualquier proceso de modificación de la forma de los datos (es común que los datos sufran algún tipo de transformación).
+
+El objetivo principal de esta etapa es mejorar el rendimiento de los modelos creados mediante la transformación de los datos que utilizan.
+
+Algunas técnicas son:
+
+  - Normalización
+
+  - Discretización
+
+  - Lograr normalidad
+
+  - Imaginación ( Generación de nuevas variables )
+
+**Normalizacion**
+
+Se aplica sobre valores numéricos. Consiste en escalar los features de manera que puedan ser mapeados a un rango más pequeño.
+
+Por ejemplo: 0 a 1 o -1 a 1.
+
+Es principalmente utilizada cuando:
+  - Las unidades de medidas dificultan la comparación de features.
+  - Se quiere evitar que atributos con mayores magnitudes tengan pesos muy diferentes al resto
+
+**Normalizacion - Min Max**
+
+Funciona al ver cuánto más grande es el valor actual del valor mínimo del feature y escala esta diferencia por el rango.
+
+Los valores de normalización min-max van de 0 a 1.
+
+**Normalizacion - Zscore**
+
+Los valores para un atributo se normalizan en base a su media y desvío estándar.
+Es útil cuando el verdadero mínimo y máximo del atributo no son conocidos, o cuando hay valores atípicos que dominan la normalización min-max.
+
+**Normalizacion - Decimal Scaling**
+
+Asegura que cada valor normalizado se encuentra entre - 1 y 1.
+Donde d representa el número de dígitos en los valores de la variable con el valor absoluto más grande.
+
+
+<img width="789" alt="Screen Shot 2022-10-22 at 14 13 44" src="https://user-images.githubusercontent.com/50343570/197353512-5765aeb6-6d90-4a9c-89ef-c718cb377edb.png">
+
+**Transforamcione spara lograr normalidad**
+
+Podemos reducir este sesgo a partir de transformaciones, por ejemplo:
+  - Raíz cuadrada
+  - Logaritmos
+  - Inversa de la raíz cuadrada
+  - Transformaciones de Box-Cox
+
+**Discretaizacion**
+
+Es una técnica que permite dividir el rango de una variable continua en
+intervalos.
+
+Se reducen los valores de una variable contínua a un número reducido de
+etiquetas.
+
+**Discretaizacion - Binning**
+
+Se divide a la variable en un número específico de bins
+
+Los criterios de agrupamiento pueden ser por ejemplo:
+  - Igual-Frecuencia: La misma cantidad de observaciones en un bin
+  - Igual-Ancho: Definimos rangos o intervalos de clases para cada bin
+  - Cuantiles: Separar en intervalos utilizando Mediana, Cuantiles,Percentiles.
+
+A su vez para cada uno de los agrupamientos podemos hacer:
+  - Reemplazo por media o mediana
+  - Reemplazo por una etiqueta o valor entero
+
+<img width="792" alt="Screen Shot 2022-10-22 at 14 16 26" src="https://user-images.githubusercontent.com/50343570/197353630-5cd3bafd-a6a2-455c-b356-1f09dafd4ed6.png">
+
+**Variables Dummies - One Hot Encoding**
+
+Algunos métodos analíticos requieren que las variables predictoras sean numéricas
+Cuando tenemos categóricos, podemos recodificar la variable categórica en una o más variables Dummies.
+
+
+<img width="762" alt="Screen Shot 2022-10-22 at 14 17 32" src="https://user-images.githubusercontent.com/50343570/197353664-1cac3049-9ce9-4f04-9af8-22bc0ca16835.png">
+
+
+
+
+
+
 
