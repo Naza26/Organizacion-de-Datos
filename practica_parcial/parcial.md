@@ -705,6 +705,147 @@ Ejecutamos el caso que queremos probar por cada uno de los K arboles
 Si la mayoría de los casos devolvió que la categoría final es CATEGORIA-A,
 entonces nos quedamos con ese valor de salida.
 
+## Reduccion de la dimensionalidad
+
+**ISOMAP**
+
+¿Qué pasa cuando tenemos una variedad, usando la definición matemática, sobre la cual están distribuidos los datos?
+
+Una variedad es una porción del espacio, de dimensión n que se parece a ℝn, en un espació de dimensión mayor.
+
+Hipótesis de variedades
+
+Esta hipótesis sostiene que la mayoría de los conjuntos de datos de alta dimensión del mundo real quedan cerca de una variedad con muchas menos dimensiones.
+Este supuesto se observa a menudo de forma empírica. 
+
+
+<img width="963" alt="Screen Shot 2022-10-23 at 16 04 54" src="https://user-images.githubusercontent.com/50343570/197410773-90e0b58b-941e-4a4e-86e8-b2b8d157392e.png">
+
+
+<img width="951" alt="Screen Shot 2022-10-23 at 16 46 13" src="https://user-images.githubusercontent.com/50343570/197414643-80f60bb0-c020-4283-a6b5-0e6b5c3d44c0.png">
+
+
+<img width="912" alt="Screen Shot 2022-10-23 at 16 47 05" src="https://user-images.githubusercontent.com/50343570/197414683-ded6548c-23da-4db0-8d2b-75dd336c7492.png">
+
+<img width="946" alt="Screen Shot 2022-10-23 at 16 47 39" src="https://user-images.githubusercontent.com/50343570/197414703-404ad677-fe6b-4f1d-9ace-3adcc0419563.png">
+
+
+<img width="907" alt="Screen Shot 2022-10-23 at 16 48 01" src="https://user-images.githubusercontent.com/50343570/197414741-299c4a53-abc8-4d44-8217-447a9a0bf60b.png">
+
+
+**Debilidades**
+
+Es un algoritmo lento,  a partir de 1000 observaciones comienza a notarse la lentitud.
+puede crear una proyección errónea si k es demasiado grande con respecto a la estructura de la variedad o si hay ruido en los datos, de tal forma que los puntos aparecen ligeramente movidos, fuera de la variedad. Incluso un solo dato mal medido puede alterar muchas entradas en la matriz de distancia geodésica. 
+Si k es demasiado pequeño, el gráfico de vecindad puede volverse demasiado escaso para aproximar las trayectorias geodésicas con precisión. 
+
+Landmark ISOMAP
+
+Tengo N datos especiales, siendo que N es menor que el número total de datos. Y solo tomo las distancias que involucran a estos N datos especiales. 
+Los puedo elegir de forma uniformemente distribuida.
+Luego se aplica Landmark-MDS (LMDS) en la matriz de distancias calculadas para encontrar una proyección euclidiana de todos los puntos en el conjunto original de datos.
+
+**t-SNE**
+
+Se trata de otro método que al igual que PCA, toma datos de un espacio de alta dimensión y los proyecta en un espacio de menor dimensión para que puedan ser representados.
+
+
+<img width="932" alt="Screen Shot 2022-10-23 at 17 14 16" src="https://user-images.githubusercontent.com/50343570/197416000-f8d08e7d-be74-4db6-8247-919be2ff859a.png">
+
+
+<img width="961" alt="Screen Shot 2022-10-23 at 17 14 53" src="https://user-images.githubusercontent.com/50343570/197416016-fa3f8b55-2be1-4687-9cb3-6d3eadb8eb46.png">
+
+
+<img width="942" alt="Screen Shot 2022-10-23 at 17 15 42" src="https://user-images.githubusercontent.com/50343570/197416082-382882bd-66e3-436a-aa01-eb0e540c4e18.png">
+
+
+<img width="941" alt="Screen Shot 2022-10-23 at 17 16 00" src="https://user-images.githubusercontent.com/50343570/197416108-205b3d19-ae66-4ee3-be34-33d5ed43186f.png">
+
+
+<img width="964" alt="Screen Shot 2022-10-23 at 17 16 34" src="https://user-images.githubusercontent.com/50343570/197416132-2465930d-ec5e-4a9b-a114-243a08e06062.png">
+
+cómo las curvas no son iguales, hay que normalizar la similitud:
+Similitud/Suma de todas las similitudes = Similitud escalada = puntaje (score)
+
+En realidad, t-SNE tiene un parámetro llamado “perplejidad” (perplexity) que es igual a la densidad esperada para un punto. 
+La desviación estándar se define por este valor de perplejidad que corresponde al número de vecinos alrededor de cada punto. Este valor lo establece el usuario de antemano y permite estimar la desviación estándar de las distribuciones gaussianas definidas para cada punto xi. 
+Cuanto mayor es la perplejidad, mayor es la variación.
+
+t-SNE promedia los dos puntajes de similitud, en ambas direcciones para unificar el valor.
+
+
+En Resumen:
+
+Fortalezas:
+  - De lo mejor para visualizar datos
+  - Conserva estructuras no lineales globales y locales
+
+Debilidades:
+  - Es estocástico (es no determinista)
+  - Escala mucho en tiempo con dimensiones y puntos
+  - No se puede usar para nuevos puntos
+
+
+**MDS: Multidimensional Sclaing y PCoA: Principal Coordinate Analysis**
+
+Idea: 
+
+- Preservar las distancias entre puntos 
+- Ubicar los puntos en una dimensión menor tal que las distancias se parezcan lo más posible
+
+La distancia calculada puede ser cualquiera, por ejemplo la euclidiana.
+
+Ahora tengo que encontrar una nueva matriz M con la misma cantidad de columnas (es decir ejemplos) pero menos filas, 2 (según las dimensiones que quiera visualizar)
+
+Para esta nueva Matriz voy a calcular las distancias. Generando una segunda matriz de distancias, que deberá ser lo más parecida a la original.
+
+¡Queremos preservar las distancias! -> Siempre
+
+Para encontrar los valores que minimicen la función de Stress hay varios algoritmos matemáticos, como:
+
+- Método de descenso empinado de Kruskal  (Kruskal’s steepest descent method): un método de descenso por gradiente
+- Método iterativo de mayorización de De Leeuw (De Leeuw’s iterative majorization method), también llamado SMACOF
+
+Una cosa importante a tener en cuenta es que estos métodos son enfoques iterativos, que a veces dan resultados diferentes.
+
+*+MDS: Descenso por gradiente**
+
+La técnica de descenso por gradiente es una técnica genérica, utilizada en muchos algoritmos, la podemos usar en regresión lineal para ajustar la mejor recta, en PCA y por supuesto es una parte fundamental del algoritmo backpropagation utilizado para el entrenamiento de redes neurales 
+
+
+Se trata de encontrar el mínimo de la función de error, utilizando para ello el gradiente como brújula. Ya que el gradiente apunta siempre en la dirección de máximo crecimiento, ir en la dirección opuesta nos acercará al mínimo.
+
+
+<img width="962" alt="Screen Shot 2022-10-23 at 19 20 33" src="https://user-images.githubusercontent.com/50343570/197420895-bed48cb7-6b3c-4516-ba15-191429c46e81.png">
+
+
+<img width="970" alt="Screen Shot 2022-10-23 at 19 20 44" src="https://user-images.githubusercontent.com/50343570/197420904-c1838904-4423-4bad-9d7c-7ca68eba7e0d.png">
+
+
+El cálculo que se hizo para el componente A1MDS1, hay que repetirlo para todos los componentes y en N pasos iterativos ir achicando el error cada vez más, hasta llegar a cero o al menor valor posible (el mínimo de la función de error).
+Cabe destacar que en general las raíces se las elimina de la ecuación para facilitar los cálculos, y lo que se intenta minimizar es el error cuadrático (es decir el error al cuadrado, o sin la raíz) ya que minimizar el error cuadrático es lo mismo que minimizar el error real.
+
+En este ejemplo se calculó la derivada con la raíz cuadrada, para no perder la forma original de la función de error. 
+
+
+<img width="944" alt="Screen Shot 2022-10-23 at 19 23 49" src="https://user-images.githubusercontent.com/50343570/197421044-c0d15455-50d2-4a68-9bdd-7206ddeea4cd.png">
+
+
+<img width="952" alt="Screen Shot 2022-10-23 at 19 26 41" src="https://user-images.githubusercontent.com/50343570/197421133-3d6239eb-b3fa-41b4-87f7-26cda9a202e3.png">
+
+
+<img width="952" alt="Screen Shot 2022-10-23 at 19 28 21" src="https://user-images.githubusercontent.com/50343570/197421201-dcafc93a-a5dd-4a08-99aa-59b0c170b22f.png">
+
+
+Fortalezas:
+
+  - Soporta varios tipos de distancias
+  - Permite transformaciones no lineales
+
+Debilidades:
+
+  - Optimización iterativa con mínimos locales
+  - Difícil determinar que distancia a usar es la mejor
 
 
 
