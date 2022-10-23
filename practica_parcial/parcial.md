@@ -384,9 +384,110 @@ Cuando tenemos categóricos, podemos recodificar la variable categórica en una 
 
 <img width="762" alt="Screen Shot 2022-10-22 at 14 17 32" src="https://user-images.githubusercontent.com/50343570/197353664-1cac3049-9ce9-4f04-9af8-22bc0ca16835.png">
 
+### Analisis de Valores Atipicos
+
+“Un outlier es una observación que se desvía tanto de las otras observaciones como para despertar sospechas que fue generado por un mecanismo diferente”
+
+- Es un concepto subjetivo al problema.
+- Son observaciones distantes del resto de los datos
+- Pueden deberse a un error de medición, aleatoriedad, que esa instancia pertenezca a una familia distinta del resto, etc.
+
+Ejemplo 1: Una persona de 120 años de edad
+Ejemplo 2: Una persona de 4 años que mide 1.80mts
 
 
+<img width="276" alt="Screen Shot 2022-10-23 at 11 59 13" src="https://user-images.githubusercontent.com/50343570/197399360-d804bb9e-482a-43d7-8dd5-6fff1d1e6315.png">
+
+¿Es necesario eliminarlos?
+
+- Deben ser cuidadosamente inspeccionados
+- Pueden estar alertando anomalías, en algunas situaciones nuestra tarea de interés será encontrarlos.
+
+Tipos de Outliers
 
 
+<img width="710" alt="Screen Shot 2022-10-23 at 12 00 30" src="https://user-images.githubusercontent.com/50343570/197399402-b16c8827-3f24-4920-a772-ff0d40d53fe2.png">
 
+
+En grandes volúmenes de datos la detección de outliers resulta más eficiente estudiando todas las variables.
+
+Los outliers, en casos multivariados, pueden provocar dos tipos de efectos:
+
+El efecto de enmascaramiento se produce cuando un grupo de outliers esconden a otro/s. Es decir, los outliers enmascarados se harán visibles cuando se elimine/n el o los outliers que los esconden.
+
+
+El efecto de inundación ocurre cuando una observación sólo es outlier en presencia de otra/s observación/es. Si se quitara/n la/s última/s, la primera
+dejaría de ser outlier.
+
+
+<img width="776" alt="Screen Shot 2022-10-23 at 12 02 39" src="https://user-images.githubusercontent.com/50343570/197399508-2553c9ec-f184-492a-9238-3c1669e1c820.png">
+
+<img width="766" alt="Screen Shot 2022-10-23 at 12 03 02" src="https://user-images.githubusercontent.com/50343570/197399530-63fa6ba9-3d27-4c1e-be3c-6e7c172f3c8d.png">
+
+**UNIVARIADOS**
+
+**Zscore**
+
+Z-Score es una métrica que indica cuántas desviaciones estándar tiene una observación de la media muestral, asumiendo una distribución gaussiana.
+Cuando calculamos Z-Score para cada muestra debemos fijar un umbral:
+
+- Un valor como “regla de oro” es Z > 3
+
+**Zscore modificado**
+
+La media de la muestra y la desviación estándar de la muestra, pueden verse afectados por los valores extremos presentes en los datos.
+
+Regla de oro:
+
+- Valores mayores a 3.5 son considerados outliers
+
+
+**Analisis de Boxplot**
+
+Los Box-Plots permiten visualizar valores extremos univariados.
+Las estadísticas de una distribución univariada se resumen en términos de cinco cantidades:
+
+- Mínimo/máximo (bigotes)
+- Primer y tercer cuantil (caja)
+- Mediana (línea media de la caja)
+- IQR = Q3 - Q1
+
+Generalmente la regla de decisión:
++/- 1.5*IQR Outliers moderados
++/- 3 *IQR Outliers severos
+
+
+Problema
+
+Una forma de tratar valores atípicos es eliminar los valores más altos y más bajos de una variable.
+
+Esto puede funcionar bastante bien, pero no tiene en cuenta las combinaciones de variables.
+
+
+**MULTIVARIADOS**
+
+**Distancia de Mahalanobis**
+
+
+<img width="743" alt="Screen Shot 2022-10-23 at 12 08 44" src="https://user-images.githubusercontent.com/50343570/197399848-4e7d11c3-f686-4d1a-ad35-22c8409b2b0b.png">
+
+**LOF - Local Outlier Factor**
+
+
+<img width="782" alt="Screen Shot 2022-10-23 at 12 12 32" src="https://user-images.githubusercontent.com/50343570/197400087-599a39ec-daca-45f7-b1c1-d92be62f2cab.png">
+
+**Isolation Forest**
+
+
+<img width="779" alt="Screen Shot 2022-10-23 at 12 15 12" src="https://user-images.githubusercontent.com/50343570/197400204-a7e7ef1a-8460-4d96-ae98-12b4f4a632a7.png">
+
+Tomar una muestra de los datos y construir un árbol de
+aislamiento:
+
+1. Seleccionar aleatoriamente n características .
+2. Dividir los puntos de datos seleccionando aleatoriamente un valor entre el mínimo y el máximo de las características seleccionadas.
+
+La partición de observaciones se repite recursivamente hasta que todas las observaciones estén aisladas.
+
+Isolation Forest identifica anomalías como las observaciones con longitudes de ruta promedio cortas en los árboles de aislamiento.
 
