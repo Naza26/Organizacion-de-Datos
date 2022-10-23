@@ -491,3 +491,222 @@ La partición de observaciones se repite recursivamente hasta que todas las obse
 
 Isolation Forest identifica anomalías como las observaciones con longitudes de ruta promedio cortas en los árboles de aislamiento.
 
+## Arboles
+
+**ID3 (Iterative Dichotomiser 3)**
+
+Genera un árbol de decisión a partir de un conjunto de ejemplos.
+
+Representación de un Árbol de decisión
+La salida del algoritmo ID3 se representa como un grafo en forma de árbol, cuyos componentes son:
+
+<img width="435" alt="Screen Shot 2022-10-23 at 12 24 35" src="https://user-images.githubusercontent.com/50343570/197400761-eb0a6f2e-6f3e-4ae3-808b-a53403ae4871.png">
+
+
+<img width="938" alt="Screen Shot 2022-10-23 at 12 25 29" src="https://user-images.githubusercontent.com/50343570/197400809-5d45bde3-607f-4ceb-97ad-ca0fe99eaf3d.png">
+
+
+**ID3 - Entropia (de la información)**
+
+La medida del desorden o la medida de la pureza. Básicamente, es la medida de la impureza o aleatoriedad en los datos.
+
+Importante
+
+- Para una muestra homogénea la entropía es igual a 0
+
+- La máxima entropía viene dada por Log2(n), n son los posibles valores de salida. 
+- Si n =2 (TRUE o FALSE) entonces, la máxima entropía es 1. O sea es la máxima incertidumbre
+
+**ID3 - Ganancia de información:**
+
+La ganancia de información se aplica para cuantificar qué característica, de un conjunto de datos dados, proporciona la máxima información sobre la clasificación.
+Si tuviésemos que elegir una sola característica, para clasificar. ¿Cuál sería?
+
+**ID3 - Algoritmo básico:**
+
+1. Calcular la entropía para todas las clases.
+2. Calcular la entropía para cada valor posible de cada atributo.
+3. Seleccionar el mejor atributo basado en la reducción de la entropía. Usando el cálculo de
+Ganancia de la Información
+4. Iterar, para cada sub-nodo. Excluyendo el nodo raíz, que ya fue usado.
+
+<img width="959" alt="Screen Shot 2022-10-23 at 12 30 20" src="https://user-images.githubusercontent.com/50343570/197401072-59eb8664-0c6d-45d6-b68d-4d09a78c7c00.png">
+
+
+<img width="947" alt="Screen Shot 2022-10-23 at 12 30 33" src="https://user-images.githubusercontent.com/50343570/197401083-c27c8b37-0e6e-43d0-a3fe-62736a03515a.png">
+
+<img width="951" alt="Screen Shot 2022-10-23 at 12 30 58" src="https://user-images.githubusercontent.com/50343570/197401101-7f55d66e-0237-4fef-9752-9fdf0a7661de.png">
+
+<img width="955" alt="Screen Shot 2022-10-23 at 12 31 08" src="https://user-images.githubusercontent.com/50343570/197401106-f7865083-f272-49f2-9f93-eebe80f87f02.png">
+
+
+<img width="952" alt="Screen Shot 2022-10-23 at 12 31 24" src="https://user-images.githubusercontent.com/50343570/197401120-70b1e91e-f740-4226-a143-8aabce850233.png">
+
+
+<img width="933" alt="Screen Shot 2022-10-23 at 12 32 17" src="https://user-images.githubusercontent.com/50343570/197401170-96cd3342-1731-4254-9a5a-8b7330feef73.png">
+
+
+<img width="951" alt="Screen Shot 2022-10-23 at 12 32 39" src="https://user-images.githubusercontent.com/50343570/197401191-bf67d80a-d555-460a-9acc-f9343b764514.png">
+
+
+<img width="956" alt="Screen Shot 2022-10-23 at 12 32 49" src="https://user-images.githubusercontent.com/50343570/197401195-181a8a03-0f53-40c0-9a24-e3ba426c8cda.png">
+
+<img width="937" alt="Screen Shot 2022-10-23 at 12 32 59" src="https://user-images.githubusercontent.com/50343570/197401204-788ffa99-4fb1-472a-b23b-789c2206e2a9.png">
+
+
+<img width="910" alt="Screen Shot 2022-10-23 at 12 33 12" src="https://user-images.githubusercontent.com/50343570/197401220-10c36fe9-769b-4477-b64c-835d83f6865f.png">
+
+<img width="909" alt="Screen Shot 2022-10-23 at 12 33 33" src="https://user-images.githubusercontent.com/50343570/197401234-f14a4d57-ea00-43f4-b6c6-c3d269e1733e.png">
+
+
+<img width="947" alt="Screen Shot 2022-10-23 at 12 33 42" src="https://user-images.githubusercontent.com/50343570/197401240-2d909602-4491-41e1-8fb0-33da3ed52878.png">
+
+
+<img width="959" alt="Screen Shot 2022-10-23 at 12 34 31" src="https://user-images.githubusercontent.com/50343570/197401290-40c434a2-faf2-4d24-8007-858991c94582.png">
+
+
+<img width="949" alt="Screen Shot 2022-10-23 at 12 34 42" src="https://user-images.githubusercontent.com/50343570/197401295-db879a84-b4d2-4f73-8c54-58a7a23c14ac.png">
+
+
+<img width="957" alt="Screen Shot 2022-10-23 at 12 34 54" src="https://user-images.githubusercontent.com/50343570/197401301-cbe53b92-1552-4867-bb7c-2717561c9211.png">
+
+<img width="884" alt="Screen Shot 2022-10-23 at 12 35 02" src="https://user-images.githubusercontent.com/50343570/197401313-82a8c095-1692-4848-8efa-ab222c4422b6.png">
+
+
+- Un nodo de decisión está asociado a uno de los atributos y tiene 2 o más ramas que salen de él, cada una de ellas representando los posibles valores que puede tomar el atributo asociado.
+
+- Un nodo-respuesta está asociado a la clasificación que se quiere proporcionar,y nos devuelve la decisión del árbol con respecto al ejemplo de entrada.
+
+**Impureza de Gini**
+
+La impureza de Gini es una medida de cuán a menudo un elemento elegido aleatoriamente del conjunto sería etiquetado incorrectamente si fue etiquetado de manera aleatoria de acuerdo a la distribución de las etiquetas en el subconjunto
+
+Algunas implementaciones de árboles de decisión utilizan la impureza de Gini en lugar de la ganancia de información, ya que es más fácil de calcular (computacionalmente menos costosa) Ejemplo: Scikit-learn
+
+<img width="418" alt="Screen Shot 2022-10-23 at 12 37 55" src="https://user-images.githubusercontent.com/50343570/197401429-04a15778-d7b5-4d0d-9d11-1324d3201bd5.png">
+
+
+<img width="972" alt="Screen Shot 2022-10-23 at 12 38 34" src="https://user-images.githubusercontent.com/50343570/197401458-3cda0631-af58-486a-8553-8250f73043c8.png">
+
+
+<img width="960" alt="Screen Shot 2022-10-23 at 12 38 49" src="https://user-images.githubusercontent.com/50343570/197401475-466712e4-f0fc-4772-8b05-17622d310c86.png">
+
+<img width="962" alt="Screen Shot 2022-10-23 at 12 39 01" src="https://user-images.githubusercontent.com/50343570/197401483-019cf627-bce5-4dca-8e15-674946f6fb4c.png">
+
+
+<img width="960" alt="Screen Shot 2022-10-23 at 12 39 21" src="https://user-images.githubusercontent.com/50343570/197401494-4e26e18f-e93f-4fb4-b1e8-90a456b2a002.png">
+
+
+Para saber cual clasifica mejor, tenemos que medir la impureza de cada nodo y de cada árbol.
+
+Hay varias formas de medir esto, una muy popular es llamada: Gini
+
+
+<img width="962" alt="Screen Shot 2022-10-23 at 12 39 56" src="https://user-images.githubusercontent.com/50343570/197401519-804a0af1-3dda-46f9-a87f-595f9a66b82b.png">
+
+
+<img width="927" alt="Screen Shot 2022-10-23 at 12 40 09" src="https://user-images.githubusercontent.com/50343570/197401526-bb320a62-3c81-4512-9bf9-96124c1c23d9.png">
+
+<img width="936" alt="Screen Shot 2022-10-23 at 12 40 20" src="https://user-images.githubusercontent.com/50343570/197401545-a00cbcfb-4658-42ee-9856-1ce569590cf8.png">
+
+
+<img width="953" alt="Screen Shot 2022-10-23 at 12 41 09" src="https://user-images.githubusercontent.com/50343570/197401592-698c9c9c-c14c-4148-906a-be9941845460.png">
+
+
+<img width="944" alt="Screen Shot 2022-10-23 at 12 41 23" src="https://user-images.githubusercontent.com/50343570/197401599-a29390a9-6a06-47f2-8b25-c972d0c776b4.png">
+
+
+<img width="950" alt="Screen Shot 2022-10-23 at 12 41 41" src="https://user-images.githubusercontent.com/50343570/197401616-aabf8808-aa83-4e37-badf-21dc846513af.png">
+
+**C4.5**
+
+Se hicieron mejoras a ID3
+- Campos numéricos, rangos continuous
+- Datos faltantes
+- Poda
+
+**C4.5: Datos faltantes**
+
+
+Datos faltantes:
+
+Manejo de los datos de formación con valores de atributos faltantes - C4.5 permite valores de los atributos para ser marcado como “?” para faltantes. Los valores faltantes de los atributos simplemente no se usan en los cálculos de la ganancia y la entropía.
+
+**C4.5: Campos numéricos, o rangos continuous**
+
+Campos numéricos, o rangos continuous:
+
+Si un atributo A, tiene un rango continuo de valores. El algoritmo puede, dinámicamente crear
+un campo Booleano tal que si A < C Ac = TRUE, sino Ac = FALSE.
+
+¿Cómo encontrar ese umbral C?
+
+Vamos a cortar el rango de forma que C nos quede con la mayor ganancia de información.
+
+Ordenamos A de menor a mayor, por ejemplo.
+Identificamos los valores adyacentes (de la clase que es nuestra salida)
+Detectamos cuando hay un cambio de valor de salida, entonces en esos límites seguramente están nuestros Ci candidatos. 
+Creamos varios Ci, que dividen en dos el rango. Para cada uno de estos rangos calculamos la ganancia de información. Nos quedamos con el que nos
+da el mejor resultado. (Se puede también quedarse con los N mejor.)
+
+
+**C4.5: Poda**
+
+El método de poda del árbol consiste en:
+ generar el árbol tal y como hemos visto
+
+
+A continuación, analizar recursivamente, y desde las hojas, qué preguntas (nodos interiores) se pueden eliminar sin que se incremente el error de clasificación con el conjunto de test.
+(Si hay ruido el árbol tendrá un error, es decir cantidad de casos mal clasificados)
+Error= Casos bien clasificados / Casos Totales
+
+El método de poda del árbol consiste en:
+Se elimina un nodo interior cuyos sucesores son todos nodos hoja.
+Se vuelve a calcular el error que se comete con este nuevo árbol sobre el conjunto de test.
+Si este error es menor que el error anterior, entonces se elimina el nodo y todos sus sucesores(hojas)
+Se repite.
+
+
+**Random Forest**
+
+“Muchos estimadores mediocres, promediados pueden ser muy buenos”
+
+
+Es una técnica, o meta-algoritmo que dice lo siguiente:
+Dado un conjunto de entrenamiento D, de tamaño n, la técnica de bagging generará m nuevos conjuntos de entrenamiento D1,... Di,..., Dm cada uno de tamaño n' tomando muestras aleatorias de D. 
+Y  en general n'<n. Siendo n' aproximadamente un 2⁄3 de n.
+
+
+Attribute bagging (o random subspace): 
+
+Luego para cada una de las m tablas, escogemos sólo algunos atributos (COLUMNAS) de forma aleatoria también.
+
+¿Con cuantas nos quedamos?  =>Con RAÍZ CUADRADA del número de atributos.
+
+Cómo acá hay 8 atributos, tomamos Round(√8) = 3 
+(Esto es recomendable sobre todo cuando hay muchas columnas)
+
+
+Ahora tenemos m tablas reducidas en atributos y para cada una de ellas entrenamos un árbol
+Para cada árbol calculamos su matriz de confusión:
+
+
+<img width="549" alt="Screen Shot 2022-10-23 at 15 49 22" src="https://user-images.githubusercontent.com/50343570/197410159-47d2e933-8a4f-4577-bc86-c20e1bea651d.png">
+
+
+<img width="876" alt="Screen Shot 2022-10-23 at 15 50 30" src="https://user-images.githubusercontent.com/50343570/197410210-d7ac5239-a9f3-4a1a-8db2-f703af9451c3.png">
+
+
+¿Cómo clasificar una vez finalizado el proceso?
+
+Luego para clasificar un nuevo ejemplo hacemos lo siguiente:
+
+Ejecutamos el caso que queremos probar por cada uno de los K arboles
+Si la mayoría de los casos devolvió que la categoría final es CATEGORIA-A,
+entonces nos quedamos con ese valor de salida.
+
+
+
+
+
+
